@@ -10,6 +10,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'tejas',
     order: 1,
+    photo: {
+      src: '/aircraft-photos/tejas.jpg',
+      credit: 'Government of India',
+      license: 'GODL-India',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Tejas_MK1_in_service_for_7_years.jpg',
+    },
     name: { en: 'Tejas (LCA)', hi: 'तेजस (एलसीए)' },
     role: 'fighter',
     madeInIndia: true,
@@ -46,6 +52,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'su-30mki',
     order: 2,
+    photo: {
+      src: '/aircraft-photos/su30mki.jpg',
+      credit: 'Chris Lofting',
+      license: 'GFDL 1.2',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Indian_Air_Force_Sukhoi_Su-30MKI_Lofting-3.jpg',
+    },
     name: { en: 'Su-30MKI', hi: 'सुखोई-30एमकेआई' },
     role: 'fighter',
     madeInIndia: false,
@@ -81,6 +93,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'rafale',
     order: 3,
+    photo: {
+      src: '/aircraft-photos/rafale.jpg',
+      credit: 'Dylan Agbagni',
+      license: 'CC0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Indian_Air_Force_Rafale.jpg',
+    },
     name: { en: 'Rafale', hi: 'राफेल' },
     role: 'fighter',
     madeInIndia: false,
@@ -114,6 +132,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'c17-globemaster',
     order: 4,
+    photo: {
+      src: '/aircraft-photos/c17.jpg',
+      credit: 'SD Singh',
+      license: 'Public domain',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:C_17_Globemaster_of_Indian_Air_Force.jpg',
+    },
     name: { en: 'C-17 Globemaster III', hi: 'सी-17 ग्लोबमास्टर III' },
     role: 'transport',
     madeInIndia: false,
@@ -152,6 +176,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'hal-dhruv',
     order: 5,
+    photo: {
+      src: '/aircraft-photos/dhruv.jpg',
+      credit: 'Arpingstone',
+      license: 'Public domain',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Indian_air_force_dhruv_helicopter_j4042_arp.jpg',
+    },
     name: { en: 'ALH Dhruv', hi: 'ध्रुव (ALH)' },
     role: 'helicopter',
     madeInIndia: true,
@@ -197,6 +227,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'netra-awacs',
     order: 6,
+    photo: {
+      src: '/aircraft-photos/netra.jpg',
+      credit: 'Indian Air Force',
+      license: 'GODL-India',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:IAF_Netra_AEW%26C_releasing_flares.jpg',
+    },
     name: { en: 'Netra AEW&C', hi: 'नेत्र (AEW&C)' },
     role: 'awacs',
     madeInIndia: true,
@@ -232,6 +268,13 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'pc7-mk2',
     order: 7,
+    photo: {
+      src: '/aircraft-photos/pc7.jpg',
+      credit: 'Nisarg Vyas',
+      license: 'GFDL 1.2',
+      sourceUrl:
+        'https://commons.wikimedia.org/wiki/File:Pilatus_PC-7_Mk_II_of_Indian_Air_Force_en_route_to_Dundigal_AFA,_Hyderabad.PNG',
+    },
     name: { en: 'Pilatus PC-7 Mk II', hi: 'पिलाटस पीसी-7 एमके II' },
     role: 'trainer',
     madeInIndia: false,
@@ -269,6 +312,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'hawk-mk132',
     order: 8,
+    photo: {
+      src: '/aircraft-photos/hawk.jpg',
+      credit: 'Government of India',
+      license: 'GODL-India',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:IAF_Surya_Kiran_Aero_India_2023.jpg',
+    },
     name: { en: 'Hawk Mk132', hi: 'हॉक एमके132' },
     role: 'trainer',
     madeInIndia: false,
@@ -309,6 +358,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'il-78-tanker',
     order: 9,
+    photo: {
+      src: '/aircraft-photos/il78.jpg',
+      credit: 'SSgt Matthew Hannen, USAF',
+      license: 'Public domain',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Indian_Air_Force_Ilyushin_Il-78MKI.jpg',
+    },
     name: { en: 'Il-78 (MARS)', hi: 'इल्यूशिन-78 (MARS)' },
     role: 'tanker',
     madeInIndia: false,
@@ -340,6 +395,12 @@ export const AIRCRAFT: Aircraft[] = [
   {
     id: 'mig-21-bison',
     order: 10,
+    photo: {
+      src: '/aircraft-photos/mig21.jpg',
+      credit: 'Sanil Nath',
+      license: 'CC BY 4.0',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Indian_Air_Force_MiG-21_Bison_landing.jpg',
+    },
     name: { en: 'MiG-21 Bison', hi: 'मिग-21 बाइसन' },
     role: 'fighter',
     retired: true,

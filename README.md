@@ -95,9 +95,10 @@ device.
 4. ⬜ **Stage 2–3** — Sky Lab (how planes fly) and Fighter Academy.
 5. 🚧 **Stage 4–5C**:
    - Stage 4 (India's Hangar of Fame): ✅ 10 aircraft with verified specs,
-     collectible flip cards, "Spot the Shape" unlock game, detail pages,
-     Compare mode. Remaining aircraft (Mirage 2000, MiG-29, Jaguar,
-     C-130J, Il-76, An-32, C-295, HJT-16 Kiran, A-50 Phalcon) still to add.
+     real openly-licensed photos, collectible flip cards, "Spot the Shape"
+     unlock game, detail pages, Compare mode. Remaining aircraft (Mirage
+     2000, MiG-29, Jaguar, C-130J, Il-76, An-32, C-295, HJT-16 Kiran,
+     A-50 Phalcon) still to add.
    - Stage 5 (IAF Story): ✅ two hero lessons live (Marshal Arjan Singh,
      Rakesh Sharma), linked to real Officer Like Qualities.
    - Women of the IAF / Mission Control: ⬜ not started.
@@ -117,5 +118,9 @@ users. Unverified facts are never shown to children.
 
 ## Credits
 
-All sound effects are synthesised at runtime (see `CREDITS.md`) — no
-licensed or copyrighted audio/image assets are used anywhere in the app.
+All sound effects are synthesised at runtime — no audio assets are used.
+All illustrations/mascot/icons are original SVG. Stage 4's aircraft
+gallery and the Stage 1 missiles lesson use real photographs, sourced
+from Wikimedia Commons under openly reusable licences (not copyrighted
+press photos) — see `CREDITS.md` for the full per-photo attribution
+table, required by several of those licences.

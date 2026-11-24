@@ -56,15 +56,34 @@ export function AircraftCard({ aircraft, unlocked, onTapLocked, onOpenDetail }: 
         <button
           type="button"
           onClick={handleTap}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-3xl bg-white/95 p-3 shadow-md"
+          className="absolute inset-0 flex flex-col overflow-hidden rounded-3xl bg-slate-200 shadow-md"
           style={{ backfaceVisibility: 'hidden' }}
           aria-label={unlocked ? pick(aircraft.name, language) : 'Locked aircraft, tap to play Spot the Shape'}
         >
-          <AircraftSilhouette spec={aircraft.silhouette} size={150} silhouetteMode={!unlocked} />
-          {unlocked ? (
-            <p className="font-display text-sm font-bold text-slate-900">{pick(aircraft.name, language)}</p>
+          {aircraft.photo ? (
+            <div className="relative flex-1">
+              <img
+                src={aircraft.photo.src}
+                alt=""
+                className={`h-full w-full object-cover ${unlocked ? '' : 'scale-105 blur-[3px] grayscale contrast-125 brightness-90'}`}
+                loading="lazy"
+              />
+              {!unlocked && <div className="absolute inset-0 flex items-center justify-center bg-slate-900/30 text-4xl">🔒</div>}
+              {unlocked && (
+                <p className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/80 to-transparent px-2 py-2 text-left font-display text-sm font-bold text-white">
+                  {pick(aircraft.name, language)}
+                </p>
+              )}
+            </div>
           ) : (
-            <p className="text-2xl">🔒</p>
+            <div className="flex flex-1 flex-col items-center justify-center gap-2 p-3">
+              <AircraftSilhouette spec={aircraft.silhouette} size={150} silhouetteMode={!unlocked} />
+              {unlocked ? (
+                <p className="font-display text-sm font-bold text-slate-900">{pick(aircraft.name, language)}</p>
+              ) : (
+                <p className="text-2xl">🔒</p>
+              )}
+            </div>
           )}
         </button>
 

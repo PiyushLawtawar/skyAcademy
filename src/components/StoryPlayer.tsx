@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { LocalizedText } from '../content/types';
+import type { StoryPanel } from '../content/types';
 import { useProgressStore } from '../store/progressStore';
 import { pick } from '../i18n';
 import { STRINGS } from '../i18n/strings';
@@ -9,7 +9,7 @@ import { ReadAloudButton } from './ReadAloudButton';
 import { BigButton } from './BigButton';
 
 interface StoryPlayerProps {
-  panels: LocalizedText[];
+  panels: StoryPanel[];
   onFinished: () => void;
 }
 
@@ -38,10 +38,22 @@ export function StoryPlayer({ panels, onFinished }: StoryPlayerProps) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -24 }}
           transition={{ duration: 0.25 }}
-          className="flex w-full items-center justify-between gap-3 rounded-3xl bg-white/95 px-5 py-5 shadow-md"
+          className="flex w-full flex-col gap-3 rounded-3xl bg-white/95 px-5 py-5 shadow-md"
         >
-          <p className="text-left font-display text-lg font-semibold text-slate-800">{pick(panel, language)}</p>
-          <ReadAloudButton text={pick(panel, language)} />
+          {panel.photo && (
+            <img
+              src={panel.photo.src}
+              alt=""
+              className="h-40 w-full rounded-2xl object-cover"
+              loading="lazy"
+            />
+          )}
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-left font-display text-lg font-semibold text-slate-800">
+              {pick(panel.text, language)}
+            </p>
+            <ReadAloudButton text={pick(panel.text, language)} />
+          </div>
         </motion.div>
       </AnimatePresence>
 

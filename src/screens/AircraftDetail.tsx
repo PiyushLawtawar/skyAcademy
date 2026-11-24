@@ -44,7 +44,20 @@ export function AircraftDetail() {
         ← {pick(STRINGS.back, language)}
       </button>
 
-      <AircraftSilhouette spec={aircraft.silhouette} size={240} />
+      {aircraft.photo ? (
+        <div className="w-full">
+          <img
+            src={aircraft.photo.src}
+            alt={pick(aircraft.name, language)}
+            className="h-56 w-full rounded-3xl object-cover shadow-md"
+          />
+          <p className="mt-1 text-right text-xs text-slate-500">
+            📷 {aircraft.photo.credit} ({aircraft.photo.license})
+          </p>
+        </div>
+      ) : (
+        <AircraftSilhouette spec={aircraft.silhouette} size={240} />
+      )}
       <ScreenHeading>{pick(aircraft.name, language)}</ScreenHeading>
 
       <div className="flex flex-wrap items-center justify-center gap-2">

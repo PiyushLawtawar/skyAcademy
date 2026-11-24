@@ -1,4 +1,24 @@
-import type { Lesson } from './types';
+import type { Lesson, PhotoRef } from './types';
+
+// Real, openly-licensed photos (see CREDITS.md for full attribution).
+const TEJAS_PHOTO: PhotoRef = {
+  src: '/aircraft-photos/tejas.jpg',
+  credit: 'Government of India',
+  license: 'GODL-India',
+  sourceUrl: 'https://commons.wikimedia.org/wiki/File:Tejas_MK1_in_service_for_7_years.jpg',
+};
+const ASTRA_PHOTO: PhotoRef = {
+  src: '/aircraft-photos/astra-missile.jpg',
+  credit: 'Ministry of Defence (India)',
+  license: 'GODL-India',
+  sourceUrl: 'https://commons.wikimedia.org/wiki/File:Tejas_firing_Astra_MK1.jpg',
+};
+const BRAHMOS_PHOTO: PhotoRef = {
+  src: '/aircraft-photos/brahmos-missile.jpg',
+  credit: 'Mike1979 Russia',
+  license: 'CC BY-SA 3.0',
+  sourceUrl: 'https://commons.wikimedia.org/wiki/File:BrahMos_missile_at_Engineering_Technologies_2012_02.jpg',
+};
 
 // Phase 3 slice: the first real lesson, proving the full Learn → Explore →
 // Play → Check loop end to end. More Hangar lessons (engine, landing gear,
@@ -11,24 +31,35 @@ export const LESSONS: Lesson[] = [
     title: { en: 'Parts of a Plane', hi: 'जहाज़ के हिस्से' },
     storyPanels: [
       {
-        en: "Hi, I'm Veer! Let's learn about aeroplanes together.",
-        hi: 'नमस्ते, मैं वीर हूँ! चलो मिलकर हवाई जहाज़ के बारे में जानें।',
+        text: {
+          en: "Hi, I'm Veer! Let's learn about aeroplanes together.",
+          hi: 'नमस्ते, मैं वीर हूँ! चलो मिलकर हवाई जहाज़ के बारे में जानें।',
+        },
+        photo: TEJAS_PHOTO,
       },
       {
-        en: 'Every plane has special parts that help it fly high.',
-        hi: 'हर जहाज़ में खास हिस्से होते हैं जो उसे उड़ने में मदद करते हैं।',
+        text: {
+          en: 'Every plane has special parts that help it fly high.',
+          hi: 'हर जहाज़ में खास हिस्से होते हैं जो उसे उड़ने में मदद करते हैं।',
+        },
       },
       {
-        en: "This is the fuselage — the plane's long body, like its tummy!",
-        hi: 'यह है फ्यूज़लाज — जहाज़ का लंबा शरीर, जैसे उसका पेट!',
+        text: {
+          en: "This is the fuselage — the plane's long body, like its tummy!",
+          hi: 'यह है फ्यूज़लाज — जहाज़ का लंबा शरीर, जैसे उसका पेट!',
+        },
       },
       {
-        en: 'The wings push air down, and that push lifts the plane up!',
-        hi: 'पंख हवा को नीचे धकेलते हैं, और इससे जहाज़ ऊपर उठता है!',
+        text: {
+          en: 'The wings push air down, and that push lifts the plane up!',
+          hi: 'पंख हवा को नीचे धकेलते हैं, और इससे जहाज़ ऊपर उठता है!',
+        },
       },
       {
-        en: "The tail keeps the plane steady and turns its nose.",
-        hi: 'पूँछ जहाज़ को स्थिर रखती है और उसकी नाक मोड़ती है।',
+        text: {
+          en: 'The tail keeps the plane steady and turns its nose.',
+          hi: 'पूँछ जहाज़ को स्थिर रखती है और उसकी नाक मोड़ती है।',
+        },
       },
     ],
     exploreActivityId: 'plane-parts-explore',
@@ -103,24 +134,42 @@ export const LESSONS: Lesson[] = [
     title: { en: 'Hardpoints & Payload', hi: 'हार्डपॉइंट और सामान' },
     storyPanels: [
       {
-        en: 'A fighter jet can carry extra things under its wings.',
-        hi: 'एक फाइटर जेट अपने पंखों के नीचे अतिरिक्त चीज़ें ले जा सकता है।',
+        text: {
+          en: 'A fighter jet can carry extra things under its wings.',
+          hi: 'एक फाइटर जेट अपने पंखों के नीचे अतिरिक्त चीज़ें ले जा सकता है।',
+        },
       },
       {
-        en: 'Those strong carrying spots are called hardpoints.',
-        hi: 'उन मज़बूत जगहों को हार्डपॉइंट कहते हैं।',
+        text: {
+          en: 'Those strong carrying spots are called hardpoints.',
+          hi: 'उन मज़बूत जगहों को हार्डपॉइंट कहते हैं।',
+        },
       },
       {
-        en: 'A drop tank on a hardpoint carries extra fuel, so the jet flies further.',
-        hi: 'हार्डपॉइंट पर लगा ड्रॉप टैंक अतिरिक्त ईंधन ले जाता है, ताकि जेट और दूर उड़ सके।',
+        text: {
+          en: 'A drop tank on a hardpoint carries extra fuel, so the jet flies further.',
+          hi: 'हार्डपॉइंट पर लगा ड्रॉप टैंक अतिरिक्त ईंधन ले जाता है, ताकि जेट और दूर उड़ सके।',
+        },
       },
       {
-        en: 'Hardpoints can also carry a missile, a smart tool that protects the sky.',
-        hi: 'हार्डपॉइंट एक मिसाइल भी ले जा सकते हैं, जो आसमान की रक्षा करने वाला एक स्मार्ट उपकरण है।',
+        text: {
+          en: 'Hardpoints can also carry a missile, a smart tool that protects the sky.',
+          hi: 'हार्डपॉइंट एक मिसाइल भी ले जा सकते हैं, जो आसमान की रक्षा करने वाला एक स्मार्ट उपकरण है।',
+        },
       },
       {
-        en: "India makes its own missiles, like Astra, and shares BrahMos with Russia!",
-        hi: 'भारत अपनी खुद की मिसाइलें बनाता है, जैसे अस्त्र, और रूस के साथ मिलकर ब्रह्मोस बनाता है!',
+        text: {
+          en: 'India makes its own missile called Astra, and fires it from jets like Tejas!',
+          hi: 'भारत अस्त्र नाम की अपनी खुद की मिसाइल बनाता है, और इसे तेजस जैसे जेट से दागता है!',
+        },
+        photo: ASTRA_PHOTO,
+      },
+      {
+        text: {
+          en: 'India also builds BrahMos, a fast cruise missile, together with Russia!',
+          hi: 'भारत रूस के साथ मिलकर ब्रह्मोस भी बनाता है, जो एक तेज़ क्रूज़ मिसाइल है!',
+        },
+        photo: BRAHMOS_PHOTO,
       },
     ],
     exploreActivityId: 'hardpoints-explore',
@@ -192,24 +241,34 @@ export const LESSONS: Lesson[] = [
     title: { en: 'Marshal Arjan Singh', hi: 'मार्शल अर्जन सिंह' },
     storyPanels: [
       {
-        en: 'Long ago, a brave officer named Arjan Singh joined the Air Force.',
-        hi: 'बहुत पहले, अर्जन सिंह नाम के एक बहादुर अधिकारी वायु सेना में शामिल हुए।',
+        text: {
+          en: 'Long ago, a brave officer named Arjan Singh joined the Air Force.',
+          hi: 'बहुत पहले, अर्जन सिंह नाम के एक बहादुर अधिकारी वायु सेना में शामिल हुए।',
+        },
       },
       {
-        en: 'He worked hard for many years and always stayed calm under pressure.',
-        hi: 'उन्होंने कई सालों तक मेहनत की और हमेशा मुश्किल समय में भी शांत रहे।',
+        text: {
+          en: 'He worked hard for many years and always stayed calm under pressure.',
+          hi: 'उन्होंने कई सालों तक मेहनत की और हमेशा मुश्किल समय में भी शांत रहे।',
+        },
       },
       {
-        en: 'Arjan Singh reached the very top rank — Marshal of the Air Force!',
-        hi: 'अर्जन सिंह सबसे ऊँचे पद तक पहुँचे — मार्शल ऑफ द एयर फोर्स!',
+        text: {
+          en: 'Arjan Singh reached the very top rank — Marshal of the Air Force!',
+          hi: 'अर्जन सिंह सबसे ऊँचे पद तक पहुँचे — मार्शल ऑफ द एयर फोर्स!',
+        },
       },
       {
-        en: 'He is the only officer ever to reach this special five-star rank.',
-        hi: 'वे इस खास पाँच-सितारा पद तक पहुँचने वाले एकमात्र अधिकारी हैं।',
+        text: {
+          en: 'He is the only officer ever to reach this special five-star rank.',
+          hi: 'वे इस खास पाँच-सितारा पद तक पहुँचने वाले एकमात्र अधिकारी हैं।',
+        },
       },
       {
-        en: 'His calm, steady leadership inspired every pilot who flew with him.',
-        hi: 'उनके शांत और स्थिर नेतृत्व ने हर उस पायलट को प्रेरित किया जो उनके साथ उड़ा।',
+        text: {
+          en: 'His calm, steady leadership inspired every pilot who flew with him.',
+          hi: 'उनके शांत और स्थिर नेतृत्व ने हर उस पायलट को प्रेरित किया जो उनके साथ उड़ा।',
+        },
       },
     ],
     exploreActivityId: null,
@@ -262,24 +321,34 @@ export const LESSONS: Lesson[] = [
     title: { en: 'Rakesh Sharma: To Space and Back', hi: 'राकेश शर्मा: अंतरिक्ष की यात्रा' },
     storyPanels: [
       {
-        en: 'Rakesh Sharma was a brave IAF pilot who loved flying high.',
-        hi: 'राकेश शर्मा एक बहादुर वायु सेना पायलट थे जिन्हें ऊँचा उड़ना बहुत पसंद था।',
+        text: {
+          en: 'Rakesh Sharma was a brave IAF pilot who loved flying high.',
+          hi: 'राकेश शर्मा एक बहादुर वायु सेना पायलट थे जिन्हें ऊँचा उड़ना बहुत पसंद था।',
+        },
       },
       {
-        en: 'In 1984, he flew all the way into space!',
-        hi: '1984 में, वे पूरे रास्ते अंतरिक्ष तक उड़ गए!',
+        text: {
+          en: 'In 1984, he flew all the way into space!',
+          hi: '1984 में, वे पूरे रास्ते अंतरिक्ष तक उड़ गए!',
+        },
       },
       {
-        en: 'He became the very first Indian to ever see Earth from space.',
-        hi: 'वे अंतरिक्ष से पृथ्वी को देखने वाले पहले भारतीय बने।',
+        text: {
+          en: 'He became the very first Indian to ever see Earth from space.',
+          hi: 'वे अंतरिक्ष से पृथ्वी को देखने वाले पहले भारतीय बने।',
+        },
       },
       {
-        en: "When asked how India looked, he said 'Saare Jahan Se Achha' — better than the whole world!",
-        hi: 'जब उनसे पूछा गया कि भारत कैसा दिखता है, तो उन्होंने कहा "सारे जहाँ से अच्छा"!',
+        text: {
+          en: "When asked how India looked, he said 'Saare Jahan Se Achha' — better than the whole world!",
+          hi: 'जब उनसे पूछा गया कि भारत कैसा दिखता है, तो उन्होंने कहा "सारे जहाँ से अच्छा"!',
+        },
       },
       {
-        en: 'His courage showed that IAF pilots can reach the most amazing heights.',
-        hi: 'उनके साहस ने दिखाया कि वायु सेना के पायलट सबसे अद्भुत ऊँचाइयों तक पहुँच सकते हैं।',
+        text: {
+          en: 'His courage showed that IAF pilots can reach the most amazing heights.',
+          hi: 'उनके साहस ने दिखाया कि वायु सेना के पायलट सबसे अद्भुत ऊँचाइयों तक पहुँच सकते हैं।',
+        },
       },
     ],
     exploreActivityId: null,

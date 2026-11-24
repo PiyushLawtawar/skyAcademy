@@ -59,7 +59,15 @@ export function SilhouetteGame({ target, allAircraft, onUnlocked, onClose }: Sil
             <p className="font-display font-bold text-slate-800">
               {language === 'hi' ? 'इस आकार को पहचानो! यह कौन सा विमान है?' : 'Spot the shape! Which aircraft is this?'}
             </p>
-            <AircraftSilhouette spec={target.silhouette} size={180} silhouetteMode />
+            {target.photo ? (
+              <img
+                src={target.photo.src}
+                alt=""
+                className="h-40 w-full rounded-2xl object-cover blur-sm grayscale"
+              />
+            ) : (
+              <AircraftSilhouette spec={target.silhouette} size={180} silhouetteMode />
+            )}
             <div className="grid w-full grid-cols-2 gap-2">
               {options.map((opt) => (
                 <motion.button

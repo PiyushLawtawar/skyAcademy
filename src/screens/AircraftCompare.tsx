@@ -110,7 +110,11 @@ function CompareColumn({
 }) {
   return (
     <div className="flex flex-col items-center gap-3 rounded-3xl bg-white/90 p-4 text-center">
-      <AircraftSilhouette spec={aircraft.silhouette} size={150} />
+      {aircraft.photo ? (
+        <img src={aircraft.photo.src} alt="" className="h-28 w-full rounded-2xl object-cover" />
+      ) : (
+        <AircraftSilhouette spec={aircraft.silhouette} size={150} />
+      )}
       <p className="font-display font-bold text-slate-900">{pick(aircraft.name, language)}</p>
       {highlightFaster && (
         <p className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">

@@ -68,12 +68,25 @@ export interface Fact {
   source?: string;
 }
 
+export interface PhotoRef {
+  src: string;
+  credit: string;
+  license: string;
+  sourceUrl: string;
+}
+
+export interface StoryPanel {
+  text: LocalizedText;
+  /** Real photo, openly licensed — see CREDITS.md for attribution. */
+  photo?: PhotoRef;
+}
+
 export interface Lesson {
   id: string;
   stageId: string;
   order: number;
   title: LocalizedText;
-  storyPanels: LocalizedText[];
+  storyPanels: StoryPanel[];
   /** Looked up in the Explore component registry (Lesson.tsx); null skips the step. */
   exploreActivityId: string | null;
   /** Looked up in the Play component registry (Lesson.tsx); null skips the step. */
@@ -144,4 +157,6 @@ export interface Aircraft {
   facts: AircraftFact[];
   silhouette: AircraftSilhouetteSpec;
   retired?: boolean;
+  /** Real photo, openly licensed (public domain / CC / GODL-India) — see CREDITS.md for attribution. */
+  photo?: PhotoRef;
 }
