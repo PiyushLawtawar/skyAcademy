@@ -3,98 +3,62 @@ import { motion } from 'framer-motion';
 export type VeerExpression = 'happy' | 'thinking' | 'surprised' | 'proud' | 'sleepy';
 
 interface VeerMascotProps {
+  /** Kept for API compatibility; the crest ignores it except "proud" (adds a glow). */
   expression?: VeerExpression;
   size?: number;
   calmMode?: boolean;
   className?: string;
 }
 
-// Veer, the bar-headed goose mascot: an original character, drawn as inline
-// SVG so wings/eyes can animate independently. No existing cartoon's style is
-// referenced here — shape only, built from simple primitives.
+/**
+ * The Sky Cadet crest: a tricolour roundel on golden pilot's wings, in the
+ * style of an air force flying badge (original artwork, not an official
+ * IAF emblem). Replaces the earlier cartoon mascot everywhere it appeared,
+ * for a more professional, real-air-force feel.
+ */
 export function VeerMascot({ expression = 'happy', size = 140, calmMode = false, className }: VeerMascotProps) {
-  const blink = expression === 'sleepy';
-  const eyeHeight = blink ? 1 : 7;
-  const wingFlap = calmMode ? 0 : 6;
-  const bodyBob = calmMode ? 0 : 3;
-
+  const proud = expression === 'proud';
   return (
     <motion.svg
-      viewBox="0 0 200 200"
+      viewBox="0 0 240 120"
       width={size}
-      height={size}
+      height={size / 2}
       className={className}
       role="img"
-      aria-label={`Veer the mascot goose, looking ${expression}`}
-      animate={calmMode ? undefined : { y: [0, -bodyBob, 0] }}
-      transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+      aria-label="Sky Cadet wings badge"
+      animate={calmMode ? undefined : { y: [0, -3, 0] }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
     >
-      {/* Left wing */}
-      <motion.path
-        d="M55 110 Q20 95 15 130 Q35 150 65 135 Z"
-        fill="#dfe4ee"
-        stroke="#b9c1d1"
-        strokeWidth={2}
-        animate={calmMode ? undefined : { rotate: [0, -wingFlap, 0] }}
-        style={{ transformOrigin: '60px 118px' }}
-        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      {/* Right wing */}
-      <motion.path
-        d="M145 110 Q180 95 185 130 Q165 150 135 135 Z"
-        fill="#dfe4ee"
-        stroke="#b9c1d1"
-        strokeWidth={2}
-        animate={calmMode ? undefined : { rotate: [0, wingFlap, 0] }}
-        style={{ transformOrigin: '140px 118px' }}
-        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      {/* Tricolour scarf */}
-      <path d="M70 128 Q100 145 130 128 L130 142 Q100 158 70 142 Z" fill="#FF9933" />
-      <path d="M70 136 Q100 152 130 136 L130 148 Q100 163 70 148 Z" fill="#FFFFFF" />
-      <path d="M70 143 Q100 158 130 143 L130 154 Q100 169 70 154 Z" fill="#138808" />
-
-      {/* Body */}
-      <ellipse cx="100" cy="115" rx="45" ry="52" fill="#eef1f6" stroke="#c7cedd" strokeWidth={2} />
-
-      {/* Flying helmet */}
-      <path d="M62 78 Q100 40 138 78 Q138 98 128 100 Q100 85 72 100 Q62 98 62 78 Z" fill="#5c6b8a" />
-      <circle cx="100" cy="76" r="5" fill="#3c4760" />
-
-      {/* Goggles */}
-      <circle cx="82" cy="88" r="15" fill="#2a3246" stroke="#ffcf6b" strokeWidth={3} />
-      <circle cx="118" cy="88" r="15" fill="#2a3246" stroke="#ffcf6b" strokeWidth={3} />
-      <rect x="92" y="83" width="16" height="6" rx="3" fill="#ffcf6b" />
-
-      {/* Eyes (goggle lenses) */}
-      <motion.ellipse
-        cx="82"
-        cy="88"
-        rx="6"
-        ry={eyeHeight}
-        fill="#fefefe"
-        animate={calmMode ? undefined : { ry: [eyeHeight, 1, eyeHeight] }}
-        transition={{ duration: 3.2, repeat: Infinity, repeatDelay: 1.6 }}
-      />
-      <motion.ellipse
-        cx="118"
-        cy="88"
-        rx="6"
-        ry={eyeHeight}
-        fill="#fefefe"
-        animate={calmMode ? undefined : { ry: [eyeHeight, 1, eyeHeight] }}
-        transition={{ duration: 3.2, repeat: Infinity, repeatDelay: 1.6 }}
-      />
-      <circle cx="82" cy="88" r="2.4" fill="#2a3246" />
-      <circle cx="118" cy="88" r="2.4" fill="#2a3246" />
-
-      {/* Beak (bill) */}
-      <path d="M92 104 Q100 118 108 104 Q100 112 92 104 Z" fill="#FF9933" stroke="#d97c1f" strokeWidth={1.5} />
-
-      {/* Feet */}
-      <path d="M85 165 L80 178 M85 165 L90 178" stroke="#FF9933" strokeWidth={3} strokeLinecap="round" />
-      <path d="M115 165 L110 178 M115 165 L120 178" stroke="#FF9933" strokeWidth={3} strokeLinecap="round" />
+      <defs>
+        <linearGradient id="crest-gold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#fff1b8" />
+          <stop offset="0.45" stopColor="#e9b949" />
+          <stop offset="1" stopColor="#a8741a" />
+        </linearGradient>
+        <radialGradient id="crest-glow">
+          <stop offset="0" stopColor="#ffd77a" stopOpacity="0.8" />
+          <stop offset="1" stopColor="#ffd77a" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      {proud && <circle cx="120" cy="60" r="60" fill="url(#crest-glow)" />}
+      {[-1, 1].map((side) => (
+        <g key={side} transform={side === -1 ? 'translate(240 0) scale(-1 1)' : undefined}>
+          {[0, 1, 2, 3, 4].map((i) => (
+            <path
+              key={i}
+              d={`M150 ${44 + i * 9} C ${178 + i * 4} ${38 + i * 9}, ${210 - i * 10} ${36 + i * 10}, ${236 - i * 16} ${30 + i * 12} C ${206 - i * 12} ${48 + i * 9}, ${178} ${54 + i * 8}, 150 ${56 + i * 8} Z`}
+              fill="url(#crest-gold)"
+              stroke="#8a5d12"
+              strokeWidth="1"
+            />
+          ))}
+        </g>
+      ))}
+      <circle cx="120" cy="60" r="34" fill="#8a5d12" />
+      <circle cx="120" cy="60" r="31" fill="#ff9933" />
+      <circle cx="120" cy="60" r="21" fill="#ffffff" />
+      <circle cx="120" cy="60" r="11" fill="#138808" />
+      <path d="M120 14 L126 24 L114 24 Z" fill="url(#crest-gold)" stroke="#8a5d12" strokeWidth="1" />
     </motion.svg>
   );
 }

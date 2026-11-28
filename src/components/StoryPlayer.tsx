@@ -13,7 +13,7 @@ interface StoryPlayerProps {
   onFinished: () => void;
 }
 
-// "Learn" step: a short animated story told by Veer, 3–5 panels, read-aloud
+// "Learn" step: a short animated story shown as a briefing, 3–5 panels, read-aloud
 // on every panel, big Next/Back targets — no panel longer than ~2 sentences.
 export function StoryPlayer({ panels, onFinished }: StoryPlayerProps) {
   const language = useProgressStore((s) => s.settings.language);

@@ -68,3 +68,43 @@ where the official page didn't give every figure.
   manufacturer official sources, as that content is written.
 - Any further hero storybook fact (names, ranks, years, mission names) added
   in future Stage 5/5B content.
+
+## IAF Zones (v2): Armoury, War Room, Flight School, Mission Planner, Join the IAF
+
+Added 2026-11-27. This content was written from widely published public
+records (IAF history pages, PIB releases, DRDO/HAL/manufacturer pages, UPSC
+notices) but was **not** re-checked line by line against a primary source in
+the same change, unlike the "Verified" list above. Please spot-check before
+putting it in front of children. Highest-value items to check:
+
+- `src/content/weapons.ts`: each jet ↔ weapon pairing (e.g. Astra on
+  Su-30MKI/Tejas, BrahMos-A on Su-30MKI only, Meteor/MICA/SCALP/HAMMER on
+  Rafale, SPICE 2000 on Mirage 2000, Python-5/Derby on Tejas, Magic II on
+  Jaguar over-wing pylons), hardpoint counts (Su-30MKI 12, Rafale 14,
+  Tejas 8, Mirage 2000 9, MiG-29 7, Jaguar 7, MiG-21 Bison 5), gun types,
+  BrahMos ~Mach 2.8 and first air-launch Nov 2017, Rudram-1 test Oct 2020,
+  Su-30MKI ~8 t payload. Ranges are deliberately vague ("100+ km").
+- `src/content/history.ts`: dates, names and awards in each story, notably
+  27 Oct 1947 Srinagar airlift; Mehar Singh's Leh landing (May 1948, MVC);
+  Goa 18–19 Dec 1961; Chushul altitude; Trevor Keelor's 3 Sep 1965 victory
+  (VrC); 1971 timeline (3–16 Dec, Meghna Heli-Bridge, Tangail, Longewala,
+  Governor's House strike 14 Dec, ~93,000 POWs, Sekhon PVC); Op Meghdoot
+  13 Apr 1984; Op Cactus 3 Nov 1988; Kargil (Mirage LGB strikes on Tiger Hill
+  and Muntho Dhalo, Ajay Ahuja VrC, Nachiketa, Gunjan Saxena); Balakot
+  26 Feb 2019 and Abhinandan Varthaman's return on 1 Mar 2019 (VrC);
+  Op Rahat (~20,000 airlifted), Op Ganga (18,000+ total), Op Kaveri (121
+  people, Wadi Seidna night landing).
+- `src/content/concepts.ts`: real-IAF examples (Netra, IACCS, Heron, CATS
+  Warrior/Ghatak, AMCA, Akash, S-400, CDS appointed 2020).
+- `src/content/aircraft.ts`: new entries (`mirage-2000`, `mig-29`,
+  `jaguar`, `lch-prachand`, `apache`, `chinook`, `c130j`) and their
+  nicknames (Vajra, Baaz, Shamsher), Prachand's 5,000 m claim (HAL), DBO
+  landing 2013. No photos yet; cards fall back to the silhouette.
+- `src/screens/JoinIAF.tsx`: NDA age window (16½–19½), PCM requirement for
+  the flying branch, training sequence (PC-7 Mk II → Kiran → Hawk), women
+  in NDA from 2022. These rules change. Check the current UPSC notice and
+  https://careerindianairforce.cdac.in.
+- `src/content/skyFacts.ts`: the 40 shooting-star facts.
+
+Deliberately **not** included: Operation Sindoor (2025) and other recent,
+still-contested operations. Add only with carefully sourced, neutral wording.

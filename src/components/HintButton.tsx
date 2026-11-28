@@ -34,7 +34,7 @@ export function HintButton({ hints, language, onHintUsed }: HintButtonProps) {
         disabled={tier >= 2}
         className="min-h-14 rounded-2xl bg-yellow-100 px-4 py-2 font-display text-base font-semibold text-yellow-800 active:scale-95 disabled:opacity-60"
       >
-        💡 Ask Veer for a hint
+        💡 Ask for a hint
       </button>
       <AnimatePresence>
         {tier >= 1 && (

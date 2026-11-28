@@ -32,8 +32,8 @@ export const LESSONS: Lesson[] = [
     storyPanels: [
       {
         text: {
-          en: "Hi, I'm Veer! Let's learn about aeroplanes together.",
-          hi: 'नमस्ते, मैं वीर हूँ! चलो मिलकर हवाई जहाज़ के बारे में जानें।',
+          en: "Welcome to the hangar, cadet! Let's learn the parts of a fighter jet.",
+          hi: 'हैंगर में स्वागत है, कैडेट! चलो फाइटर जेट के हिस्सों के बारे में जानें।',
         },
         photo: TEJAS_PHOTO,
       },
@@ -226,7 +226,7 @@ export const LESSONS: Lesson[] = [
         ],
         correctIndex: 0,
         hints: {
-          nudge: { en: 'Remember the "Made in India" story Veer just told you.', hi: 'वीर ने अभी जो "मेड इन इंडिया" कहानी बताई, उसे याद करो।' },
+          nudge: { en: 'Remember the "Made in India" story you just read.', hi: 'अभी पढ़ी "मेड इन इंडिया" कहानी याद करो।' },
           strongerClue: { en: 'Astra is an air-to-air missile made right here in India.', hi: 'अस्त्र एक एयर-टू-एयर मिसाइल है जो यहीं भारत में बनी है।' },
         },
       },
