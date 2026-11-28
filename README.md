@@ -6,12 +6,40 @@ Qualities — through story, play and small daily missions.
 
 This repo is a working slice of the full curriculum, not the finished
 product (see **Build plan** below for what's done vs. pending): call-sign
-picker, avatar builder, the animated World Map, Veer the mascot, a
+picker, avatar builder, the animated World Map, the Sky Cadet wings crest, a
 synthesised sound manager, read-aloud, settings (incl. English/Hindi), a
 gated Parent Corner, a Zustand+`persist` progress store, a full
 Learn → Explore → Play → Check lesson engine, three real Hangar/IAF Story
 lessons, and a 10-aircraft collectible gallery (Stage 4) with a
 "Spot the Shape" unlock game and a Compare mode.
+
+## IAF Zones (v2)
+
+The home screen is now an **Air Base**: a cockpit-style header, a morning
+briefing, and an **IAF Command Centre** of seven zones that sit alongside
+the original stage islands:
+
+| Zone | What the cadet does |
+| --- | --- |
+| 🕹️ **Fly a Sortie** (`/sortie`) | Scramble checklist, then a canvas flight game with a green HUD: fly through rings, dodge storm clouds, stay above the mountains, refuel from a tanker, land. Day and night modes. |
+| 🚀 **The Armoury** (`/armoury`) | Pick a fighter (Su-30MKI, Rafale, Tejas, Mirage 2000, MiG-29, Jaguar, MiG-21) and load its real weapons onto its hardpoints, or tap a mission preset. Each weapon has a cutaway diagram, guidance type, wow fact and a "Go deeper" section. Includes a Missile School on how seekers work. |
+| 🎖️ **The War Room** (`/war-room`) | Animated storybooks of the IAF in 1947–48, 1961, 1962, 1965, 1971, 1984, 1988, 1999 and 2019, plus rescue operations. Each ends with a debrief: numbers, aircraft, a hero card, a "strategy secret" and a quick check. |
+| 🎓 **Flight School** (`/flight-school`) | 24 concepts in 4 levels (Cadet → Fighter Pilot → Squadron Commander → Air Marshal), from the 4 forces to the OODA loop and electronic warfare. Each has an animated or interactive diagram. |
+| 🗺️ **Mission Planner** (`/mission-planner`) | Strategy puzzles: choose the right aircraft team within a fuel budget, launch, then get a debrief on each role. |
+| 🇮🇳 **Join the IAF** (`/join-iaf`) | Age picker with an NDA countdown, the full school-to-squadron flight path, other entry routes, IAF careers beyond pilots, and a daily "train like a cadet" checklist. |
+| 🛩️ **3D Hangar** (`/hangar-3d`) | A big, slowly rotating 3D model of each fighter (Su-30MKI, Rafale, Tejas, Mirage 2000, MiG-29, Jaguar, MiG-21 Bison, Hawk). Drag to spin, pinch to zoom. Tap a glowing dot, a part or a chip: the camera flies to that part, everything else turns see-through, and a card explains what it is and its job (plus aircraft-specific notes). Tap empty space or ✕ to fly back out; rotation resumes. Also embedded on each fighter's card page. Built procedurally with three.js from each jet's real layout. |
+| 🏆 **Hangar of Fame** | 17 aircraft, every one with a real, openly licensed photo (added Mirage 2000, MiG-29, Jaguar, LCH Prachand, Apache, Chinook, C-130J). |
+
+Everywhere: the **living sky** background (time-of-day sky, Himalayan
+ridges, an airbase with a blinking tower, parallax clouds, random fly-pasts
+including a tricolour-smoke formation) and a **"Did you know?" shooting
+star** that a child can tap to catch a fact into their Fact Journal. Stars
+from stories, concepts, missions and sorties count towards rank-ups. Calm
+mode disables fly-pasts and loops.
+
+New-zone content is written in English only for now (Hindi pending), and
+its sources are listed in `SOURCES.md` under "IAF Zones (v2)" for a
+parent spot-check.
 
 ## Stack
 
@@ -56,7 +84,7 @@ src/
   store/       # progressStore.ts — the single source of truth, persisted
   lib/         # sound.ts (Web Audio synth SFX), readAloud.ts (Web Speech),
                  scoring.ts (star calculation)
-  components/  # VeerMascot, BigButton, HintButton, StarBurst, SkyBackground,
+  components/  # VeerMascot (now the wings crest), hangar3d/ (3D models), BigButton, HintButton, StarBurst, SkyBackground,
                  StoryPlayer, QuizEngine, WingsCeremony, AircraftCard,
                  SilhouetteGame, diagrams/ (SimplePlaneDiagram,
                  AircraftSilhouette, HardpointDiagram), explore/, play/

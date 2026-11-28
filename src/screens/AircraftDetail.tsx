@@ -1,4 +1,6 @@
+import { Suspense, lazy } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { hasModel } from '../components/hangar3d/fighterSpecs';
 import { getAircraft } from '../content/aircraft';
 import { useProgressStore } from '../store/progressStore';
 import { pick } from '../i18n';
@@ -7,6 +9,8 @@ import { AircraftSilhouette } from '../components/diagrams/AircraftSilhouette';
 import { ReadAloudButton } from '../components/ReadAloudButton';
 import { ScreenHeading } from '../components/ScreenHeading';
 import { BigButton } from '../components/BigButton';
+
+const Hangar3D = lazy(() => import('../components/hangar3d/Hangar3D').then((m) => ({ default: m.Hangar3D })));
 
 const ROLE_LABEL: Record<string, { en: string; hi: string }> = {
   fighter: { en: 'Fighter', hi: 'फाइटर' },
@@ -36,7 +40,7 @@ export function AircraftDetail() {
   const speedLabel = aircraft.role === 'fighter' ? (language === 'hi' ? 'अधिकतम गति' : 'Top speed') : language === 'hi' ? 'सामान्य गति' : 'Cruise speed';
 
   return (
-    <div className="mx-auto flex max-w-xl flex-col items-center gap-5 px-4 py-8 text-center">
+    <div className={`mx-auto flex flex-col items-center gap-5 px-4 py-8 text-center ${hasModel(aircraft.id) ? 'max-w-4xl' : 'max-w-xl'}`}>
       <button
         onClick={() => navigate(`/stage/${stageId}`)}
         className="self-start rounded-full bg-white/80 px-4 py-2 font-display font-semibold text-slate-700"
@@ -59,6 +63,14 @@ export function AircraftDetail() {
         <AircraftSilhouette spec={aircraft.silhouette} size={240} />
       )}
       <ScreenHeading>{pick(aircraft.name, language)}</ScreenHeading>
+
+      {hasModel(aircraft.id) && (
+        <div className="w-full text-left">
+          <Suspense fallback={<div className="flex h-[480px] items-center justify-center rounded-3xl bg-slate-900 font-display text-white">🛩️ Rolling the jet out of the hangar…</div>}>
+            <Hangar3D aircraftId={aircraft.id} height={500} />
+          </Suspense>
+        </div>
+      )}
 
       <div className="flex flex-wrap items-center justify-center gap-2">
         <span className="rounded-full bg-white/90 px-4 py-2 font-display text-sm font-semibold text-slate-700">

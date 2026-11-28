@@ -43,6 +43,10 @@ interface ProgressState {
   badgeIds: string[];
   cardIds: string[];
   factJournalIds: string[];
+  /** Things the cadet has opened in the free-explore zones (weapons, war stories, concepts…). */
+  exploredIds: string[];
+  /** Age the cadet picked in "Join the IAF" (only used for the NDA countdown; optional). */
+  cadetAge: number | null;
 
   lastPlayedDate: string | null;
   streakCount: number;
@@ -59,6 +63,8 @@ interface ProgressState {
   awardBadge: (badgeId: string) => void;
   collectCard: (cardId: string) => void;
   catchFact: (factId: string) => void;
+  markExplored: (id: string) => void;
+  setCadetAge: (age: number | null) => void;
   touchDailyStreak: () => void;
   updateSettings: (partial: Partial<Settings>) => void;
   unlockParentGate: () => void;
@@ -89,6 +95,8 @@ interface PersistedProgress {
   badgeIds: string[];
   cardIds: string[];
   factJournalIds: string[];
+  exploredIds: string[];
+  cadetAge: number | null;
   lastPlayedDate: string | null;
   streakCount: number;
   settings: Settings;
@@ -104,6 +112,8 @@ const INITIAL_PERSISTED_STATE: PersistedProgress = {
   badgeIds: [],
   cardIds: [],
   factJournalIds: [],
+  exploredIds: [],
+  cadetAge: null,
   lastPlayedDate: null,
   streakCount: 0,
   settings: DEFAULT_SETTINGS,
@@ -120,6 +130,8 @@ function extractPersisted(state: ProgressState): PersistedProgress {
     badgeIds: state.badgeIds,
     cardIds: state.cardIds,
     factJournalIds: state.factJournalIds,
+    exploredIds: state.exploredIds,
+    cadetAge: state.cadetAge,
     lastPlayedDate: state.lastPlayedDate,
     streakCount: state.streakCount,
     settings: state.settings,
@@ -176,6 +188,11 @@ export const useProgressStore = create<ProgressState>()(
           state.factJournalIds.includes(factId) ? state : { factJournalIds: [...state.factJournalIds, factId] },
         ),
 
+      markExplored: (id) =>
+        set((state) => (state.exploredIds.includes(id) ? state : { exploredIds: [...state.exploredIds, id] })),
+
+      setCadetAge: (cadetAge) => set({ cadetAge }),
+
       touchDailyStreak: () =>
         set((state) => {
           const today = todayKey();
@@ -215,6 +232,8 @@ export const useProgressStore = create<ProgressState>()(
             badgeIds: data.badgeIds ?? [],
             cardIds: data.cardIds ?? [],
             factJournalIds: data.factJournalIds ?? [],
+            exploredIds: data.exploredIds ?? [],
+            cadetAge: data.cadetAge ?? null,
             lastPlayedDate: data.lastPlayedDate ?? null,
             streakCount: data.streakCount ?? 0,
             settings: { ...DEFAULT_SETTINGS, ...(data.settings ?? {}) },
@@ -240,6 +259,8 @@ export const useProgressStore = create<ProgressState>()(
       version: 1,
       storage: createJSONStorage(() => safeLocalStorage()),
       partialize: extractPersisted,
+      // v2 added exploredIds/cadetAge; older saves just get the defaults merged in.
+      merge: (persisted, current) => ({ ...current, ...(persisted as Partial<ProgressState>) }),
     },
   ),
 );

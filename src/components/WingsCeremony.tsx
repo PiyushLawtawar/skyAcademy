@@ -13,7 +13,7 @@ interface WingsCeremonyProps {
   onDone: () => void;
 }
 
-// Every rank-up gets a little fanfare — Veer "pins" the new rank on, with a
+// Every rank-up gets a little fanfare — the new rank badge is "pinned" on, with a
 // fanfare sound and a one-line explanation of what that rank does (brief §6).
 export function WingsCeremony({ newRank, onDone }: WingsCeremonyProps) {
   const language = useProgressStore((s) => s.settings.language);
